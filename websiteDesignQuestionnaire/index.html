@@ -7,9 +7,9 @@
   </head>
   <body>
     <div class="container">
-      <header>
-        <h1 id="title">Website Design Questionnaire</h1>
-        <p id="description">
+      <header class="header">
+        <h1 id="title" class="text-center">Website Design Questionnaire</h1>
+        <p id="description" class="description text-center">
         The main purpose of this questionnaire is to enable both the developer and clients to gain a common
         vision of the final product. These questions can help prevent confusion and miscommunications between developer and 
         clients. By gaining a solid understanding of the client's business, audience, and needs, a developer can avoid building
@@ -20,33 +20,33 @@
       <form id="survey-form">
         <div class="form-group">
           <label id="company-name-label" for="company-name"> Company Name </label> 
-          <input id="company-name" type="text" placeholder="Enter your company's name" required />
+          <input id="company-name" type="text" class="form-control" placeholder="Enter your company's name" required />
         </div>
         
         <div class="form-group">
           <label id="contact-name-label"> Contact's Name </label>
-          <input id="contact-name" type="text" placeholder="Enter your name" required />
+          <input id="contact-name" type="text" class="form-control" placeholder="Enter your name" required />
         </div>
           
         <div class="form-group">
           <label id="contact-position"> Contact's Position </label> 
-          <input id="contact-position" type="text" placeholder="Enter your position" required />
+          <input id="contact-position" type="text" class="form-control" placeholder="Enter your position" required />
         </div>
           
         <div class="form-group">
           <p> Contact details: </p>
           <label id="email-label"> Email </label>
-          <input id="email" type="email" placeholder="Enter a valid Email" required />
+          <input id="email" type="email" class="form-control" placeholder="Enter a valid Email" required />
         </div>
           
         <div class="form-group">
           <label id="number-label"> Phone Number </label>
-          <input id="number" type="number" min="0" max="1000000000" placeholder="Enter a number" required />
+          <input id="number" type="number" min="0" max="1000000000" class="form-control" placeholder="Enter a number" required />
         </div>
           
         <div class="form-group">
           <label id="website-label"> Website </label>
-          <input id="website" type="url" placeholder="https://example.com" pattern="https://.*" size="30" required />
+          <input id="website" type="url" class="form-control" placeholder="https://example.com" pattern="https://.*" size="30" required />
         </div>
           
         <div class="form-group">
