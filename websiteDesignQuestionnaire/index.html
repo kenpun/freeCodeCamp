@@ -62,12 +62,57 @@
           </select>
         </div>
 
-          <input type="radio" name="radio-input" value="radio-input" >
-          <input type="radio" name="radio-input" value="radio-input" ><br>
-          <input type="checkbox" value="checkbox-input" >
-          <input type="checkbox" value="checkbox-input" ><br>
-          <textarea></textarea><br>
-          <button id="submit" type="submit">Submit</button>
+        <div class="form-group">
+          <p>What services would you like included?
+            <span class="clue">(Check all that apply)</span>
+          </p>
+          
+          <label>
+            <input name="prefer" type="checkbox" value="front-end" class="input-checkbox" />
+            Front-end
+          </label>
+
+          <label>
+            <input name="prefer" type="checkbox" value="back-end" class="input-checkbox" />
+            Back-end
+          </label>
+        </div>
+
+        <div class="form-group">
+          <p>Do you want to build a new website or redesign an existing one?</p>
+          <label>
+            <input type="radio" name="build-redesign" value="build" class="input-radio" checked />
+            Build a new website
+          </label>
+          <label>
+            <input type="radio" name="build-redesign" value="redesign" class="input-radio" />
+            Redesign an existing website
+          </label>
+        </div>
+          
+        <div class="form-group">
+          <p>Would you like use to provide ongoing support and maintenance?</p>
+          <label>
+            <input type="radio" name="ongoing-support" value="yes" class="input-radio" checked />
+            Yes
+          </label>
+          <label>
+            <input type="radio" name="ongoing-support" value="no" class="input-radio" />
+            No
+          </label>
+        </div>
+          
+        <div class="form-group">
+          <p>Describe your business in a few sentences</p>
+          <textarea id="business-description" class="input-textarea" name="business-description" placeholder="Enter your description here...">  
+          </textarea>
+        </div>
+          
+        <div class="form-group">
+          <button id="submit" type="submit" class="submit-button">
+            Submit
+          </button>
+        </div>
       </form>
     </div>
   </body>
