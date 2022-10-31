@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>TypeScript for the New Programmer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <nav id="navbar">
+      <header>TypeScript Documentation</header>
+      <ul>
+        <li><a class="nav-link" href="#What_is_JavaScript?_A_Brief_History">What is JavaScript? A Brief History</a></li>
+        <li><a class="nav-link" href="#TypeScript:_A_Static_Type_Checker">TypeScript: A Static Type Checker</a></li>
+        <li><a class="nav-link" href="#A_Typed_Superset_of_JavaScript">A Typed Superset of JavaScript</a></li>
+        <li><a class="nav-link" href="#Learning_JavaScript_and_TypeScript">Learning JavaScript and TypeScript</a></li>
+        <li><a class="nav-link" href="#Next_Steps">Next Steps</a></li>
+      </ul>
+    </nav>
+    <main id="main-doc">
+      <section class="main-section" id="What_is_JavaScript?_A_Brief_History">
+        <header>What is JavaScript? A Brief History</header>
+        <p>JavaScript (also known as ECMAScript) started its life as a simple scripting language for browsers. At the time it was invented, it was expected to be used for short snippets of code embedded in a web page — writing more than a few dozen lines of code would have been somewhat unusual. Due to this, early web browsers executed such code pretty slowly. Over time, though, JS became more and more popular, and web developers started using it to create interactive experiences.</p>
+        <p>Web browser developers responded to this increased JS usage by optimizing their execution engines (dynamic compilation) and extending what could be done with it (adding APIs), which in turn made web developers use it even more. On modern websites, your browser is frequently running applications that span hundreds of thousands of lines of code. This is long and gradual growth of “the web”, starting as a simple network of static pages, and evolving into a platform for rich applications of all kinds.</p>
+        <p>More than this, JS has become popular enough to be used outside the context of browsers, such as implementing JS servers using node.js. The “run anywhere” nature of JS makes it an attractive choice for cross-platform development. There are many developers these days that use only JavaScript to program their entire stack!</p>
+        <p>To summarize, we have a language that was designed for quick uses, and then grew to a full-fledged tool to write applications with millions of lines. Every language has its own quirks — oddities and surprises, and JavaScript’s humble beginning makes it have many of these. Some examples:</p>
+        <ul>
+          <li>JavaScript’s equality operator (==) coerces its arguments, leading to unexpected behavior: 
+          <code>
+            <div>if ("" == 0) {
+            // It is! But why??
+            }</div>
+            <div>if (1 < x < 3) {
+            // True for *any* value of x!
+            }
+            </div>
+          </code>
+          </li>
+          <li>JavaScript also allows accessing properties which aren't present:
+          <code>const obj = { width: 10, height: 15 };
+            // Why is this NaN? Spelling is hard!
+            const area = obj.width * obj.heigth;
+          </code>
+          </li>
+        </ul>
+      </section>
+      <section class="main-section" id="TypeScript:_A_Static_Type_Checker">
+        <header>TypeScript: A Static Type Checker</header>
+        <p>We said earlier that some languages wouldn’t allow those buggy programs to run at all. Detecting errors in code without running it is referred to as static checking. Determining what’s an error and what’s not based on the kinds of values being operated on is known as static type checking.</p>
+        <p>TypeScript checks a program for errors before execution, and does so based on the kinds of values, it’s a static type checker. For example, the last example above has an error because of the type of obj. Here’s the error TypeScript found:</p>
+        <div>
+          <code>const obj = { width: 10, height: 15 };
+            const area = obj.width * obj.heigth;
+            Property 'heigth' does not exist on type '{ width: number; height: number; }'. Did you mean 'height'?
+          </code>
+        </div><br>
+      </section>
+      <section class="main-section" id="A_Typed_Superset_of_JavaScript">
+        <header>A Typed Superset of JavaScript</header>
+        <p>How does TypeScript relate to JavaScript, though?</p>
+        <h4>Syntax</h4>
+        <p>TypeScript is a language that is a superset of JavaScript: JS syntax is therefore legal TS. Syntax refers to the way we write text to form a program. For example, this code has a syntax error because it’s missing a ) :</p>
+        <div>
+            <code>let a = (4 <br> ')' expected.</code>
+        </div>
+        <p>TypeScript doesn’t consider any JavaScript code to be an error because of its syntax. This means you can take any working JavaScript code and put it in a TypeScript file without worrying about exactly how it is written.</p>
+        <h4>Types</h4>
+        <p>However, TypeScript is a typed superset, meaning that it adds rules about how different kinds of values can be used. The earlier error about obj.heigth was not a syntax error: it is an error of using some kind of value (a type) in an incorrect way.</p>
+        <p>As another example, this is JavaScript code that you can run in your browser, and it will log a value:</p>
+        <code>console.log(4 / []);</code>
+        <p>This syntactically-legal program logs Infinity. TypeScript, though, considers division of number by an array to be a nonsensical operation, and will issue an error:</p>
+        <code>console.log(4 / []);<br> The right-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.</code>
+        <p>It’s possible you really did intend to divide a number by an array, perhaps just to see what happens, but most of the time, though, this is a programming mistake. TypeScript’s type checker is designed to allow correct programs through while still catching as many common errors as possible. (Later, we’ll learn about settings you can use to configure how strictly TypeScript checks your code.)</p>
+        <p>If you move some code from a JavaScript file to a TypeScript file, you might see type errors depending on how the code is written. These may be legitimate problems with the code, or TypeScript being overly conservative. Throughout this guide we’ll demonstrate how to add various TypeScript syntax to eliminate such errors.</p>
+        <h4>Runtime Behavior</h4>
+        <p>TypeScript is also a programming language that preserves the <em>runtime behavior</em> of JavaScript. For example, dividing by zero in JavaScript produces Infinity instead of throwing a runtime exception. As a principle, TypeScript <strong>never</strong> changes the runtime behavior of JavaScript code.</p>
+        <p>This means that if you move code from JavaScript to TypeScript, it is guaranteed to run the same way, even if TypeScript thinks that the code has type errors.<p/>
+        <p>Keeping the same runtime behavior as JavaScript is a foundational promise of TypeScript because it means you can easily transition between the two languages without worrying about subtle differences that might make your program stop working.</p>
+        <h4>Erased Types</h4>
+        <p>Roughly speaking, once TypeScript’s compiler is done with checking your code, it <em>erases</em> the types to produce the resulting “compiled” code. This means that once your code is compiled, the resulting plain JS code has no type information.</p>
+        <p>This also means that TypeScript never changes the <em>behavior</em> of your program based on the types it inferred. The bottom line is that while you might see type errors during compilation, the type system itself has no bearing on how your program works when it runs.</p>
+        <p>Finally, TypeScript doesn’t provide any additional runtime libraries. Your programs will use the same standard library (or external libraries) as JavaScript programs, so there’s no additional TypeScript-specific framework to learn.</p>
+      </section>
+      <section class="main-section" id="Learning_JavaScript_and_TypeScript">
+        <header>Learning JavaScript and TypeScript</header>
+        <p>We frequently see the question “Should I learn JavaScript or TypeScript?“.</p>
+        <p>The answer is that you can’t learn TypeScript without learning JavaScript! TypeScript shares syntax and runtime behavior with JavaScript, so anything you learn about JavaScript is helping you learn TypeScript at the same time.</p>
+        <p>There are many, many resources available for programmers to learn JavaScript; you should not ignore these resources if you’re writing TypeScript. For example, there are about 20 times more StackOverflow questions tagged javascript than typescript, but all of the javascript questions also apply to TypeScript.</p>
+        <p>If you find yourself searching for something like “how to sort a list in TypeScript”, remember: <strong>TypeScript is JavaScript’s runtime with a compile-time type checker</strong>. The way you sort a list in TypeScript is the same way you do so in JavaScript. If you find a resource that uses TypeScript directly, that’s great too, but don’t limit yourself to thinking you need TypeScript-specific answers for everyday questions about how to accomplish runtime tasks.</p>
+        </section>
+      <section class="main-section" id="Next_Steps">
+        <header>Next Steps</header>
+        <p>This was a brief overview of the syntax and tools used in everyday TypeScript. From here, you can:</p>
+        <ul>
+        <li><p>Learn some of the JavaScript fundamentals, we recommend either:</p></li>
+        <ul>
+            <li><a href="https://docs.microsoft.com/javascript/">Microsoft’s JavaScript Resources</a> or</li>
+            <li><a href="https://developer.mozilla.org/docs/Web/JavaScript/Guide">JavaScript guide at the Mozilla Web Docs</a></li>
+        </ul>
+        <li><p>Continue to <a href="/docs/handbook/typescript-in-5-minutes.html">TypeScript for JavaScript Programmers</a></p></li>
+        <li><p>Read the full Handbook <a href="/docs/handbook/intro.html">from start to finish</a> (30m)</p></li>
+        <li>
+        <p>Explore the <a href="/play#show-examples">Playground examples</a></p>
+        </li>
+        </ul>
+        </section>
+    </main>
+  </body>
+</html>
