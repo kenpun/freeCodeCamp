@@ -26,14 +26,12 @@
         <p>To summarize, we have a language that was designed for quick uses, and then grew to a full-fledged tool to write applications with millions of lines. Every language has its own quirks — oddities and surprises, and JavaScript’s humble beginning makes it have many of these. Some examples:</p>
         <ul>
           <li>JavaScript’s equality operator (==) coerces its arguments, leading to unexpected behavior: 
-          <code>
-            <div>if ("" == 0) {
+          <code> if ("" == 0) {
             // It is! But why??
-            }</div>
-            <div>if (1 < x < 3) {
+            }
+            if (1 < x < 3) {
             // True for *any* value of x!
             }
-            </div>
           </code>
           </li>
           <li>JavaScript also allows accessing properties which aren't present:
